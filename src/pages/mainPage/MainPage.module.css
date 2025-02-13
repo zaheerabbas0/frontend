@@ -1,0 +1,166 @@
+.login_page_container {
+  min-height: 100vh;
+}
+.left_container {
+  background: #e1e8e2;
+  .left_container_text {
+    padding: 3vw 10vw;
+    p {
+      padding-top: 1vw;
+      font-size: larger;
+      font-size: 0.8vw;
+      width: 22vw;
+    }
+  }
+  .left_container_image {
+    display: flex;
+    justify-content: center;
+    img {
+      height: 65vh;
+      width: 50vw;
+    }
+  }
+}
+
+.right_container {
+  display: flex;
+  padding-top: 3.5vw;
+  justify-content: center;
+  .login_right {
+    display: flex;
+    flex-direction: column;
+    .supportX_logo {
+      width: 20vw;
+      height: 3.5vw;
+    }
+    .welcome {
+      margin-top: 5px;
+      font-size: 0.9vw;
+    }
+    .login_text {
+      margin-bottom: 14px;
+      font-size: 1vw;
+      font-weight: bold;
+    }
+    .forgot_text,
+    .signup_text {
+      margin-top: 10px;
+    }
+  }
+  .login_form,
+  .setpass_form,
+  .login_buttons,
+  .setpass_btn {
+    width: 26vw;
+  }
+  .signup_form {
+    width: 42vw;
+    margin-bottom: 10px;
+  }
+}
+
+.setpass_btn {
+  margin-top: 15px;
+}
+
+.forgot_btns,
+.login_btns,
+.signup_btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.forgot_password {
+  text-decoration: underline;
+  margin-bottom: 10px;
+  width: 100%;
+  text-align: right !important;
+  a {
+    color: black;
+  }
+}
+
+.signup_upload_user {
+  margin-top: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 768px) {
+  .right_container {
+    padding-top: 13vw;
+    .login_right {
+      .supportX_logo {
+        width: 40vw;
+        height: 8vw;
+      }
+      .welcome {
+        margin-top: 12px;
+        font-size: 2.5vw;
+      }
+      .login_text {
+        margin-bottom: 20px;
+        font-size: 2.5vw;
+      }
+      .forgot_text,
+      .signup_text {
+        font-size: 2.5vw;
+        margin-top: 15px;
+      }
+      .forgot_password {
+        font-size: 2.5vw;
+      }
+    }
+    .login_form,
+    .setpass_form,
+    .login_buttons,
+    .setpass_btn {
+      width: 65vw;
+    }
+    .signup_form {
+      width: 80vw;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+@media (min-width: 769px) and (max-width: 990px) {
+  .right_container {
+    padding-top: 10vw;
+    .login_right {
+      .supportX_logo {
+        width: 25vw;
+        height: 5vw;
+      }
+      .welcome {
+        margin-top: 10px;
+        font-size: 1.5vw;
+      }
+      .login_text {
+        margin-bottom: 15px;
+        font-size: 1.8vw;
+      }
+      .forgot_text,
+      .signup_text {
+        font-size: 1.8vw;
+        margin-top: 15px;
+      }
+      .forgot_password {
+        font-size: 1.8vw;
+      }
+    }
+    .login_form,
+    .setpass_form,
+    .login_buttons,
+    .setpass_btn {
+      width: 40vw;
+    }
+    .signup_form {
+      width: 80vw;
+      margin-bottom: 10px;
+    }
+  }
+}

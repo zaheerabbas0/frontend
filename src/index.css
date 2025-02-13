@@ -1,0 +1,53 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+
+  font-family: 'Rubik', sans-serif !important;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+/* .ant-modal-mask{
+  z-index: 9999 !important;
+} */
+
+.ant-tooltip {
+  z-index: 99 !important;
+}
+.ant-select-dropdown {
+  z-index: 99 !important;
+}
+.filter-dropdown.ant-select-dropdown {
+  z-index: 1001 !important;
+}
+
+/* SKELETON LOADER */
+
+.skeleton {
+  height: 12px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 10px; /* Add some space between skeletons */
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.custom-option {
+  color: green;
+  cursor: pointer;
+  margin-left: 6px;
+}

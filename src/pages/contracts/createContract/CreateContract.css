@@ -1,0 +1,26 @@
+.create-contract {
+  padding: 1vw;
+  border: 2px solid #e3e3e3;
+  border-radius: 8px;
+  margin: 1vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.upload-contract {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1vw;
+}
+.ant-switch.ant-switch-checked:hover:not(.ant-switch-disabled) {
+  background: #1ba819;
+}
+.ant-switch.ant-switch-checked {
+  background: #1da70f;
+}
+.ant-switch {
+  overflow: hidden;
+}

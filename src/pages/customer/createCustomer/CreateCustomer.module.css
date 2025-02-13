@@ -1,0 +1,15 @@
+.create_customer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload_customer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.create_customer .ant-form-item {
+  margin-bottom: 4vh;
+}

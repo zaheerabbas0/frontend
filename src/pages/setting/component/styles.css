@@ -1,0 +1,16 @@
+.settings-page-container {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  height: 85.6vh;
+}
+.tags-content {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  /* justify-content: space-between;
+   width: 100%;  */
+}
+.tags-content > div {
+  width: calc(28% - 5px);
+}

@@ -1,0 +1,49 @@
+:root {
+  --top-padding: 1.5vw;
+}
+/* 
+.ticket-form-item {
+  gap: 8px;
+} */
+.create_ticket {
+  gap: var(--top-padding);
+  width: 100%;
+  overflow: hidden;
+  padding: var(--top-padding) 0vw 0vw 1.8vw;
+}
+
+/* .create-ticket .ant-form-item {
+  margin-bottom: 13px;
+} */
+
+.left_create,
+.right_assign {
+  background: White;
+  padding: 22px 24px;
+  border-radius: 12px;
+  height: calc(100vh - 90px - var(--top-padding));
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #bbbaba #f1f1f1;
+}
+
+.left_create::-webkit-scrollbar,
+.right_assign::-webkit-scrollbar {
+  width: 2px;
+}
+
+.left_create::-webkit-scrollbar-track,
+.right_assign::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.left_create::-webkit-scrollbar-thumb,
+.right_assign::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.left_create::-webkit-scrollbar-thumb:hover,
+.right_assign::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

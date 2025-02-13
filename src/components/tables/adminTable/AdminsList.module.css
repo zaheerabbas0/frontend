@@ -1,0 +1,20 @@
+.admin_list {
+  padding: 1vw 1vw 0.5vw 1vw;
+}
+.admin_list_header {
+  padding: 0.5vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+}
+
+.admin_ActionBtns {
+  border: none !important;
+  overflow: hidden !important;
+}
+
+.initials_avatar {
+  display: flex;
+  align-items: center;
+}

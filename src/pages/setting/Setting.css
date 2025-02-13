@@ -1,0 +1,53 @@
+.setting-info-container {
+  background: white;
+  padding: 20px;
+  .setting-info-top {
+    display: flex;
+    justify-content: space-between;
+    .setting-info {
+      display: flex;
+      gap: 20px;
+      .user-setting-image {
+        /* margin-top: 10px; */
+        img {
+          height: 120px;
+          border-radius: 50%;
+        }
+      }
+      .user-name {
+        font-weight: bold;
+        font-size: large;
+        margin: 8px 0px;
+      }
+      .user-role {
+        margin-bottom: 8px;
+        font-size: 14px;
+      }
+      .user-city-country {
+        font-size: 14px;
+      }
+    }
+  }
+  .add-info {
+    margin: 40px 0px;
+  }
+}
+
+.update-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-update {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.react-country-state-city__flag img {
+  width: 20px;
+  height: auto;
+  margin-right: 8px;
+  display: inline-block;
+}

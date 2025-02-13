@@ -1,0 +1,124 @@
+.app-content {
+  margin-top: 75px;
+  margin-left: 235px;
+  background-color: #f5f5f5 !important;
+  min-height: calc(100vh - 75px);
+  transition: margin-left 0.3s ease;
+}
+
+.app-content.collapsed {
+  margin-left: 90px;
+}
+
+.app-content.login-page {
+  margin-left: 0;
+  margin-top: 0px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #d3d3d3;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #a9a9a9;
+}
+
+.ant-tooltip-inner {
+  background-color: #effae4 !important;
+  color: #229849 !important;
+}
+
+.ant-upload-wrapper .ant-upload-drag p.ant-upload-drag-icon .anticon {
+  color: #219734;
+  font-size: 18px;
+}
+.ant-upload-wrapper.ant-upload-picture-circle-wrapper
+  .ant-upload.ant-upload-select {
+  border: 1px solid #229849;
+  /* border: none; */
+}
+
+.ant-upload-wrapper.ant-upload-picture-circle-wrapper
+  .ant-upload.ant-upload-select:hover {
+  border-color: #229849 !important;
+}
+
+.ant-tabs-ink-bar {
+  background: #229849 !important;
+}
+/* .ant-select-item-option:hover {
+  background-color: white !important;
+    color: black !important;
+} */
+
+/* .ant-select-item-option {
+  background-color: white !important; 
+ color: black !important;
+} */
+
+/**********************\  
+|      DATE PICKER     |
+ \*___________________*/
+.ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-today
+  .ant-picker-cell-inner::before {
+  border-radius: 4px;
+}
+
+.ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-range-end:not(
+    .ant-picker-cell-disabled
+  )
+  .ant-picker-cell-inner {
+  color: #fff;
+  background: #67ff16;
+}
+.ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-selected:not(
+    .ant-picker-cell-disabled
+  )
+  .ant-picker-cell-inner {
+  color: #fff;
+  background: #229849;
+}
+.ant-btn-primary {
+  background: #28951e;
+}
+.ant-btn-primary:not(:disabled):not(.ant-btn-disabled):hover {
+  background: #28951e;
+  border: 1px solid #28951e;
+}
+.ant-picker-dropdown
+  .ant-picker-time-panel-column
+  > li.ant-picker-time-panel-cell-selected
+  .ant-picker-time-panel-cell-inner {
+  background: #cefdcd;
+}
+a {
+  color: #28951e;
+}
+a:hover {
+  color: #28951e;
+}
+.ant-picker-dropdown
+  .ant-picker-cell-in-view.ant-picker-cell-today
+  .ant-picker-cell-inner::before {
+  border: 1px solid #28951e;
+}
+.ant-picker-outlined:hover {
+  border-color: #28951e;
+}
+
+/* .css-t3ipsp-control:hover {
+  background-color: #229849;
+  border-color: #229849;
+}
+
+.css-13cymwt-control {
+  background-color: #229849 !important;
+  border-color: #229849 !important;
+} */

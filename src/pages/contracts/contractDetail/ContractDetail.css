@@ -1,0 +1,81 @@
+.contract-detail {
+  padding: 1vw;
+  .contract-back-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    .contract-back-click {
+      cursor: pointer;
+    }
+  }
+
+  .contract-info {
+    margin: 0px 15px 15px 0px;
+    height: 372px;
+    .contract-info-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .contract-info-image {
+      margin-top: 10px;
+      img {
+        height: 100px;
+      }
+    }
+    .contract-card-detail {
+      display: flex;
+      justify-content: space-between;
+      padding: 0px 50px;
+      margin-top: 20px;
+      .contract-card-content {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+
+  .contract-graph {
+    margin-bottom: 15px;
+    margin-right: 15px;
+  }
+
+  .contract-card-value-count {
+    .contract-card-count {
+      height: 114px;
+      margin-bottom: 15px;
+      .contract-card-value {
+        font-weight: bold;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .contract-ticket-summary {
+    .contract-ticket-detail {
+      margin-top: 15px;
+      background: #f8f8f8;
+      .contract-ticket-info,
+      .contract-ticket-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .contract-id-status,
+      .contract-priority-tag,
+      .contract-ticket-collab {
+        display: flex;
+        gap: 0px;
+      }
+    }
+  }
+}
+
+.contract-ticket-scrollable {
+  max-height: 400px;
+  overflow-y: auto;
+}
+.contract-ticket-scrollable::-webkit-scrollbar {
+  width: 4px;
+}

@@ -1,0 +1,49 @@
+.ticket-list-header {
+  padding: 1vw 1vw 0.5vw 1vw;
+}
+
+/* .tickets-tabs {
+  padding: 1vw 1vw 0.5vw 1vw;
+} */
+
+.ticket-list {
+  background: white;
+  display: flex;
+  padding: 0.8vw 0.5vw;
+  justify-content: space-between;
+}
+
+.ticketActionBtns {
+  border: none !important;
+  overflow: hidden !important;
+}
+
+.tickets-description,
+.tickets-subject {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+.ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap,
+:where(.css-dev-only-do-not-override-d2lrxs).ant-tabs
+  > div
+  > .ant-tabs-nav
+  .ant-tabs-nav-wrap {
+  position: relative;
+  display: flex;
+  flex: auto;
+  align-self: stretch;
+  overflow: hidden;
+  white-space: nowrap;
+  background: white;
+  transform: translate(0);
+}
+.hide-scrollbar {
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  ::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+}

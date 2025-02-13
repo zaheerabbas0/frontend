@@ -1,0 +1,15 @@
+.project-list {
+  padding: 1vw 1vw 0.5vw 1vw;
+}
+
+.project-list-header {
+  padding: 8px 15px 8px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.projectActionBtns {
+  border: none !important;
+  overflow: hidden !important;
+}

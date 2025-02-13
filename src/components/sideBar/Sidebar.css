@@ -1,0 +1,69 @@
+.sider {
+  border-right: 2px solid #e3e3e3;
+  .sidebar-top {
+    height: 75px;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid #e3e3e3;
+    padding: 0 10px;
+    .app-logo {
+      height: 4vh;
+      width: 170px;
+    }
+    .bar-closer {
+      height: 3vh;
+      cursor: pointer;
+    }
+  }
+}
+
+.bar-closer.rotate {
+  transform: rotate(180deg);
+}
+
+.divider-line {
+  border: 1px solid #e3e3e3;
+  /* padding: 0px; */
+  margin: 0px;
+}
+
+.logout {
+  color: red;
+}
+
+.logout-modal {
+  text-align: center;
+  .logout-modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .logout-modal-icon {
+      width: 40px;
+      height: 60px;
+      margin-bottom: 16px;
+    }
+    .logout-modal h3 {
+      margin-bottom: 16px;
+    }
+    .logout-modal p {
+      margin-bottom: 24px;
+    }
+  }
+}
+/* 
+.ant-menu-light > .ant-menu .ant-menu-item-selected {
+  background-color: #effae4;
+  font-weight: bold;
+}
+.ant-menu-light .ant-menu-item-selected,
+.ant-menu-light > .ant-menu .ant-menu-item-selected {
+  color: #229849;
+}
+.ant-menu-light .ant-menu-item-selected,
+.ant-menu-light > .ant-menu .ant-menu-item:focus {
+  background-color: #229849;
+}
+.ant-menu-submenu-popup
+  .ant-menu-vertical.ant-menu-sub:not([class*='-active']) {
+  max-height: 50vh;
+} */

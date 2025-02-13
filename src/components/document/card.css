@@ -1,0 +1,46 @@
+.document-pdf-card {
+  width: 95%;
+  /* height: 210px; */
+  gap: 0px;
+  border-radius: 8px;
+  border: 1px;
+  opacity: 0px;
+  background: #ffffff;
+  border: 1px solid var(--Colors-BG-Colors-Brand_color-50, #dae2ed);
+}
+.document-pdf-card-inner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+
+  gap: 14px;
+  /* opacity: 0px; */
+}
+.document-text {
+  font-family: Rubik;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: center;
+}
+.alltickets-button {
+  width: 103px;
+  height: 36px;
+  padding: 11px 20px 11px 20px;
+  gap: 8px;
+  border-radius: 4px;
+  border: 1px;
+  border: 1px solid #229849;
+  color: green;
+}
+.alltickets-button:hover {
+  border-color: green !important ; /* Change border color to green on hover */
+  background-color: rgb(
+    221,
+    233,
+    221
+  ) !important; /* Change text color to green on hover */
+  color: green !important ; /* Optional: Ensure the background remains white on hover */
+}

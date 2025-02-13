@@ -1,0 +1,134 @@
+.ticket-detail-pading {
+  padding-bottom: 0;
+}
+.ticket-detail-align {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.ticket-tab-align {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+.ticket-row-detail {
+  width: 100%;
+  overflow: hidden;
+  padding: 15px 0px 0px 20px;
+  gap: 30px;
+  min-height: 42vw;
+  /* height: calc(100vh - 90px - 12px); */
+}
+.left-row-detail {
+  background: White;
+  padding: 0.5vw 1.5vw;
+  /* height: 100%; */
+  display: flex;
+  flex-direction: column;
+}
+.right-row-detail {
+  background: White;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+  /* height: 100%; */
+}
+.right-row-detail,
+.left-row-detail {
+  border-radius: 12px;
+}
+
+.right-row-detail > .details {
+  height: 80%;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.right-row-detail > .details::-webkit-scrollbar {
+  display: none;
+}
+.left-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 5px;
+}
+.priority-status-tag {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+.priority-status-tag,
+b {
+  margin-right: 15px;
+  font-weight: 400;
+  font-size: 0.89rem;
+  line-height: 118.5%;
+  color: #0d062d;
+}
+
+.left-mid-one {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 30px;
+}
+
+.description-para,
+.left-mid-two {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.detail-id-tag {
+  padding: 5px;
+  font-weight: bold;
+}
+.detail-tag {
+  padding: 0px 5px;
+  font-size: 11px;
+}
+
+.details-closed_date {
+  color: red;
+}
+
+.subject-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.detail-id-tag {
+  margin-left: 20px;
+}
+
+.pointer-cursor {
+  cursor: pointer;
+}
+p {
+  font-size: 13px;
+}
+.right {
+  margin-bottom: 25px;
+}
+
+/* @media (max-width: 1300px) {
+  .ticket-row-detail {
+    gap: 18px;
+  }
+  .left-row-detail {
+  }
+  .right-row-detail {
+    width: 100%;
+    gap: 12px;
+    padding: 15px;
+  }
+} */

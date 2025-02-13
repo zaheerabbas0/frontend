@@ -1,0 +1,84 @@
+.user-detail {
+  padding: 1vw;
+  .user-back-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    .user-back-click {
+      cursor: pointer;
+    }
+  }
+}
+.user-detail-info {
+  margin: 0px 15px 15px 0px;
+  height: 372px;
+  .user-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .user-info-image {
+    margin-top: 10px;
+    img {
+      height: 100px;
+    }
+  }
+  .user-card-detail {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 50px;
+    margin-top: 10px;
+    .user-card-content {
+      display: flex;
+      flex-direction: column;
+      .user-project-item {
+        margin: 0px 5px;
+      }
+    }
+  }
+}
+
+.user-detail-graph {
+  margin-bottom: 15px;
+  margin-right: 15px;
+}
+.user-card-value-count {
+  .user-card-count {
+    height: 114px;
+    margin-bottom: 15px;
+    .user-card-value {
+      font-weight: bold;
+      font-size: 16px;
+    }
+  }
+}
+
+.user-ticket-summary {
+  .user-ticket-detail {
+    margin-top: 15px;
+    margin-right: 15px;
+    background: #f8f8f8;
+    cursor: pointer;
+    .user-ticket-info,
+    .user-ticket-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .user-id-status,
+    .user-priority-tag,
+    .user-ticket-collab {
+      display: flex;
+      gap: 0px;
+    }
+  }
+}
+
+.user-ticket-scrollable {
+  max-height: 400px;
+  overflow-y: auto;
+}
+.user-ticket-scrollable::-webkit-scrollbar {
+  width: 4px;
+}

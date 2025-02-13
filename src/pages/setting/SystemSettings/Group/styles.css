@@ -1,0 +1,14 @@
+.group-content {
+  display: flex;
+
+  flex-wrap: wrap;
+  width: 100%;
+}
+.group-content > div {
+  width: calc(27% - 5px);
+}
+.group-container {
+  background: white;
+  border-radius: 10px;
+  min-height: 86vh;
+}

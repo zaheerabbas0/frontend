@@ -1,0 +1,11 @@
+.create-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

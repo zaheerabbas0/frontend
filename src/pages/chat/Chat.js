@@ -36,7 +36,7 @@ const Chat = () => {
 
   useEffect(() => {
     fetchUserData();
-  }, [dispatch]);
+  }, [fetchUserData]);
 
   const userInfo = JSON.parse(localStorage.getItem('user_info'));
   useEffect(() => {

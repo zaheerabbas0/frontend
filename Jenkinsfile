@@ -8,7 +8,9 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/zaheerabbas0/frontend.git'
+                git branch: 'master',
+                    credentialsId: 'github-credentials',
+                    url: 'https://github.com/zaheerabbas0/frontend.git'
             }
         }
 
@@ -32,7 +34,7 @@ pipeline {
             steps {
                 sshagent(['deploy-key']) {
                     sh """
-                    scp -r dist/* user@your-server:/var/www/frontend
+                    scp -r dist/* ubuntu@192.168.122.83:/var/www/frontend
                     ssh ubuntu@192.168.122.83 'sudo systemctl restart nginx'
                     """
                 }

@@ -4,7 +4,7 @@ import ChatSidebar from '../../components/chat/ChatSidebar';
 import ChatHeader from '../../components/chat/ChatHeader';
 import ChatMessages from '../../components/chat/ChatMessages';
 import ChatInput from '../../components/chat/ChatInput';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   connectSocket,
   disconnectSocket,

@@ -18,25 +18,57 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'export NVM_DIR="$HOME/.nvm" && . "$NVM_DIR/nvm.sh" && node -v'
-                sh 'export NVM_DIR="$HOME/.nvm" && . "$NVM_DIR/nvm.sh" && npm -v'
-                sh 'export NVM_DIR="$HOME/.nvm" && . "$NVM_DIR/nvm.sh" && npm install'
+                script {
+                    sh '''
+                    set -e
+                    export NVM_DIR="$HOME/.nvm"
+                    . "$NVM_DIR/nvm.sh"
+                    cd $WORKSPACE
+                    echo "Node Version: $(node -v)"
+                    echo "NPM Version: $(npm -v)"
+                    npm install
+                    '''
+                }
+            }
+        }
+
+        stage('Lint') {
+            steps {
+                script {
+                    sh '''
+                    set -e
+                    export NVM_DIR="$HOME/.nvm"
+                    . "$NVM_DIR/nvm.sh"
+                    cd $WORKSPACE
+                    npm run lint --max-warnings=0
+                    '''
+                }
             }
         }
 
         stage('Build') {
             steps {
-                sh 'export NVM_DIR="$HOME/.nvm" && . "$NVM_DIR/nvm.sh" && npm run build'
+                script {
+                    sh '''
+                    set -e
+                    export NVM_DIR="$HOME/.nvm"
+                    . "$NVM_DIR/nvm.sh"
+                    cd $WORKSPACE
+                    npm run build
+                    '''
+                }
             }
         }
 
         stage('Deploy') {
             steps {
                 sshagent(['deploy-key']) {
-                    sh """
+                    sh '''
+                    set -e
+                    cd $WORKSPACE
                     scp -r dist/* ubuntu@192.168.122.83:/var/www/frontend
                     ssh ubuntu@192.168.122.83 'sudo systemctl restart nginx'
-                    """
+                    '''
                 }
             }
         }

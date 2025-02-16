@@ -1,8 +1,11 @@
 pipeline {
     agent any
 
+    agent any
+
     environment {
-        NODE_VERSION = "18"  // Set your Node.js version
+        NODEJS_HOME = "/home/aone/.nvm/versions/node/v23.6.1/bin"
+        PATH = "${NODEJS_HOME}:${env.PATH}"
     }
 
     stages {

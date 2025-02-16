@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Layout, message } from 'antd';
 import ChatSidebar from '../../components/chat/ChatSidebar';
 import ChatHeader from '../../components/chat/ChatHeader';

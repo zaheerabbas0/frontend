@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     environment {
+        NVM_DIR = "/home/aone/.nvm"
         NODEJS_HOME = "/home/aone/.nvm/versions/node/v23.6.1/bin"
         PATH = "${NODEJS_HOME}:${env.PATH}"
     }
@@ -17,15 +18,15 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'node -v'  // Check Node.js version
-                sh 'npm -v'   // Check npm version
-                sh 'npm install'
+                sh 'export NVM_DIR="$HOME/.nvm" && . "$NVM_DIR/nvm.sh" && node -v'
+                sh 'export NVM_DIR="$HOME/.nvm" && . "$NVM_DIR/nvm.sh" && npm -v'
+                sh 'export NVM_DIR="$HOME/.nvm" && . "$NVM_DIR/nvm.sh" && npm install'
             }
         }
 
         stage('Build') {
             steps {
-                sh 'npm run build'
+                sh 'export NVM_DIR="$HOME/.nvm" && . "$NVM_DIR/nvm.sh" && npm run build'
             }
         }
 

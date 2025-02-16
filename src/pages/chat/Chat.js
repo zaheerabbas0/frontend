@@ -26,17 +26,17 @@ const Chat = () => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.chatUser.chatUsers);
 
-  const fetchUserData = async () => {
-    try {
-      dispatch(fetchChatUsers());
-    } catch (error) {
-      message.error('Failed to fetch users');
-    }
-  };
+const fetchUserData = useCallback(async () => {
+  try {
+    dispatch(fetchChatUsers());
+  } catch (error) {
+    message.error("Failed to fetch users");
+  }
+}, [dispatch]);
 
-  useEffect(() => {
-    fetchUserData();
-  }, [fetchUserData]);
+useEffect(() => {
+  fetchUserData();
+}, [fetchUserData]);
 
   const userInfo = JSON.parse(localStorage.getItem('user_info'));
   useEffect(() => {

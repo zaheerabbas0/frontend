@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Layout, message } from 'antd';
 import ChatSidebar from '../../components/chat/ChatSidebar';
 import ChatHeader from '../../components/chat/ChatHeader';
 import ChatMessages from '../../components/chat/ChatMessages';
 import ChatInput from '../../components/chat/ChatInput';
-import { useDispatch, useSelector } from 'react-redux';
+// import { useDispatch, useSelector } from 'react-redux';
 import {
   connectSocket,
   disconnectSocket,
@@ -26,17 +26,17 @@ const Chat = () => {
   const dispatch = useDispatch();
   const users = useSelector((state) => state.chatUser.chatUsers);
 
-const fetchUserData = useCallback(async () => {
-  try {
-    dispatch(fetchChatUsers());
-  } catch (error) {
-    message.error("Failed to fetch users");
-  }
-}, [dispatch]);
+// const fetchUserData = useCallback(async () => {
+//   try {
+//     dispatch(fetchChatUsers());
+//   } catch (error) {
+//     message.error("Failed to fetch users");
+//   }
+// }, [dispatch]);
 
-useEffect(() => {
-  fetchUserData();
-}, [fetchUserData]);
+// useEffect(() => {
+//   fetchUserData();
+// }, [fetchUserData]);
 
   const userInfo = JSON.parse(localStorage.getItem('user_info'));
   useEffect(() => {

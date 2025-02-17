@@ -58,7 +58,7 @@ pipeline {
                     sh '''
                     set -e
                     export DEPLOY_USER="ubuntu"
-                    export DEPLOY_HOST="192.168.122.83"
+                    export DEPLOY_HOST="192.168.122.252"
                     export DEPLOY_PATH="/var/www/frontend"
                     export TEMP_PATH="/tmp/frontend_deploy"
 

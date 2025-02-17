@@ -51,41 +51,33 @@ pipeline {
                 }
             }
         }
+       
         stage('Deploy') {
             steps {
-                script {
-                    sshagent(['deploy-key']) {
-                        sh 'ssh -T git@github.com'
-                    }
+                sshagent(['deploy-key']) {
+                    sh '''
+                    set -e
+                    export DEPLOY_USER="ubuntu"
+                    export DEPLOY_HOST="192.168.122.83"
+                    export DEPLOY_PATH="/var/www/frontend"
+                    export TEMP_PATH="/tmp/frontend_deploy"
+
+                    echo "Deploying files to $DEPLOY_USER@$DEPLOY_HOST"
+
+                    # Copy files to a temporary directory
+                    scp -r dist/* $DEPLOY_USER@$DEPLOY_HOST:$TEMP_PATH/
+
+                    # Move files to the final destination inside the remote server
+                    ssh $DEPLOY_USER@$DEPLOY_HOST <<EOF
+                        sudo mkdir -p $DEPLOY_PATH
+                        sudo cp -r $TEMP_PATH/* $DEPLOY_PATH/
+                        sudo rm -rf $TEMP_PATH
+                        sudo chown -R www-data:www-data $DEPLOY_PATH
+                        sudo systemctl restart nginx
+                    EOF
+                    '''
                 }
             }
         }
-        // stage('Deploy') {
-        //     steps {
-        //         sshagent(['deploy-key']) {
-        //             sh '''
-        //             set -e
-        //             export DEPLOY_USER="ubuntu"
-        //             export DEPLOY_HOST="192.168.122.83"
-        //             export DEPLOY_PATH="/var/www/frontend"
-        //             export TEMP_PATH="/tmp/frontend_deploy"
-
-        //             echo "Deploying files to $DEPLOY_USER@$DEPLOY_HOST"
-
-        //             # Copy files to a temporary directory
-        //             scp -r dist/* $DEPLOY_USER@$DEPLOY_HOST:$TEMP_PATH/
-
-        //             # Move files to the final destination inside the remote server
-        //             ssh $DEPLOY_USER@$DEPLOY_HOST <<EOF
-        //                 sudo mkdir -p $DEPLOY_PATH
-        //                 sudo cp -r $TEMP_PATH/* $DEPLOY_PATH/
-        //                 sudo rm -rf $TEMP_PATH
-        //                 sudo chown -R www-data:www-data $DEPLOY_PATH
-        //                 sudo systemctl restart nginx
-        //             EOF
-        //             '''
-        //         }
-        //     }
-        // }
     }
 }

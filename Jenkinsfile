@@ -64,6 +64,9 @@ pipeline {
 
                     echo "Deploying files to $DEPLOY_USER@$DEPLOY_HOST"
 
+                    # Ensure the remote host's key is added to known_hosts
+                    ssh-keyscan -H $DEPLOY_HOST >> ~/.ssh/known_hosts
+
                     # Copy files to a temporary directory
                     scp -r dist/* $DEPLOY_USER@$DEPLOY_HOST:$TEMP_PATH/
 
@@ -79,5 +82,6 @@ pipeline {
                 }
             }
         }
+
     }
 }

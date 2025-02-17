@@ -52,7 +52,7 @@ pipeline {
             }
         }
        
-        stage('Deploy') {
+       stage('Deploy') {
             steps {
                 sshagent(['deploy-key']) {
                     sh '''
@@ -67,21 +67,25 @@ pipeline {
                     # Ensure the remote host's key is added to known_hosts
                     ssh-keyscan -H $DEPLOY_HOST >> ~/.ssh/known_hosts
 
+                    # Ensure the temporary deployment path exists
+                    ssh $DEPLOY_USER@$DEPLOY_HOST "mkdir -p $TEMP_PATH"
+
                     # Copy files to a temporary directory
                     scp -r build/* $DEPLOY_USER@$DEPLOY_HOST:$TEMP_PATH/
 
                     # Move files to the final destination inside the remote server
-                    ssh $DEPLOY_USER@$DEPLOY_HOST <<EOF
-                        sudo mkdir -p $DEPLOY_PATH
-                        sudo cp -r $TEMP_PATH/* $DEPLOY_PATH/
-                        sudo rm -rf $TEMP_PATH
-                        sudo chown -R www-data:www-data $DEPLOY_PATH
+                    ssh -t $DEPLOY_USER@$DEPLOY_HOST << 'EOF'
+                        sudo mkdir -p /var/www/frontend
+                        sudo cp -r /tmp/frontend_deploy/* /var/www/frontend/
+                        sudo rm -rf /tmp/frontend_deploy
+                        sudo chown -R www-data:www-data /var/www/frontend
                         sudo systemctl restart nginx
                     EOF
                     '''
                 }
             }
         }
+
 
     }
 }

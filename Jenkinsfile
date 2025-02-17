@@ -74,12 +74,26 @@ pipeline {
                     scp -r build/* $DEPLOY_USER@$DEPLOY_HOST:$TEMP_PATH/
 
                     # Move files to the final destination inside the remote server
-                    ssh -t $DEPLOY_USER@$DEPLOY_HOST << 'EOF'
+                    ssh -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST << 'EOF'
+                        set -e
+                        echo "Running deployment steps on remote server..."
+
+                        # Ensure the target directory exists
                         sudo mkdir -p /var/www/frontend
+
+                        # Move files to the deployment path
                         sudo cp -r /tmp/frontend_deploy/* /var/www/frontend/
+
+                        # Remove temporary files
                         sudo rm -rf /tmp/frontend_deploy
+
+                        # Set correct permissions
                         sudo chown -R www-data:www-data /var/www/frontend
+
+                        # Restart nginx to apply changes
                         sudo systemctl restart nginx
+
+                        echo "Deployment completed successfully."
                     EOF
                     '''
                 }

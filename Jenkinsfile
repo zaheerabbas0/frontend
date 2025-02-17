@@ -52,36 +52,43 @@ pipeline {
             }
         }
        
-        stage('Deploy') {
-            steps {
-                sshagent(['deploy-key']) {
-                    sh '''
-                    set -e
-                    export DEPLOY_USER="ubuntu"
-                    export DEPLOY_HOST="192.168.122.252"
-                    export DEPLOY_PATH="/var/www/frontend"
-                    export TEMP_PATH="/tmp/frontend_deploy"
+      stage('Deploy') {
+    steps {
+        sshagent(['deploy-key']) {
+            sh '''
+            set -ex  # Enables debugging and exits on error
 
-                    echo "Deploying files to $DEPLOY_USER@$DEPLOY_HOST"
+            export DEPLOY_USER="ubuntu"
+            export DEPLOY_HOST="192.168.122.252"
+            export DEPLOY_PATH="/var/www/frontend"
+            export TEMP_PATH="/tmp/frontend_deploy"
 
-                    # Ensure the remote host's key is added to known_hosts
-                    ssh-keyscan -H $DEPLOY_HOST >> ~/.ssh/known_hosts
+            echo "Deploying files to $DEPLOY_USER@$DEPLOY_HOST"
 
-                    # Copy files to a temporary directory
-                    scp -r build/* $DEPLOY_USER@$DEPLOY_HOST:$TEMP_PATH/
+            # Ensure the remote host's key is added to known_hosts (idempotent)
+            ssh-keygen -R $DEPLOY_HOST || true
+            ssh-keyscan -H $DEPLOY_HOST >> ~/.ssh/known_hosts
 
-                    # Move files to the final destination inside the remote server
-                    ssh -tt ubuntu@192.168.122.252 <<EOF
-                        sudo mkdir -p $DEPLOY_PATH
-                        sudo cp -r $TEMP_PATH/* $DEPLOY_PATH/
-                        sudo rm -rf $TEMP_PATH
-                        sudo chown -R www-data:www-data $DEPLOY_PATH
-                        sudo systemctl restart nginx
-                    EOF
-                    '''
-                }
-            }
+            # Ensure temporary path exists before copying files
+            ssh -o BatchMode=yes $DEPLOY_USER@$DEPLOY_HOST "mkdir -p $TEMP_PATH"
+
+            # Copy files to the temporary directory (verbose for debugging)
+            scp -v -r build/* $DEPLOY_USER@$DEPLOY_HOST:$TEMP_PATH/
+
+            # Move files to the final destination inside the remote server
+            ssh -o BatchMode=yes $DEPLOY_USER@$DEPLOY_HOST << 'EOF'
+                set -ex
+                sudo mkdir -p $DEPLOY_PATH
+                sudo cp -r /tmp/frontend_deploy/* $DEPLOY_PATH/
+                sudo rm -rf /tmp/frontend_deploy
+                sudo chown -R www-data:www-data $DEPLOY_PATH
+                sudo systemctl restart nginx
+            EOF
+            '''
         }
+    }
+}
+
 
     }
 }

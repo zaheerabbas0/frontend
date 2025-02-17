@@ -68,7 +68,7 @@ pipeline {
                     ssh-keyscan -H $DEPLOY_HOST >> ~/.ssh/known_hosts
 
                     # Copy files to a temporary directory
-                    scp -r dist/* $DEPLOY_USER@$DEPLOY_HOST:$TEMP_PATH/
+                    scp -r build/* $DEPLOY_USER@$DEPLOY_HOST:$TEMP_PATH/
 
                     # Move files to the final destination inside the remote server
                     ssh $DEPLOY_USER@$DEPLOY_HOST <<EOF

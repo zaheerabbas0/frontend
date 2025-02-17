@@ -56,7 +56,8 @@ pipeline {
     steps {
         sshagent(['deploy-key']) {
             sh '''
-            set -euxo pipefail  # Enables strict error handling
+            #!/bin/bash
+            set -eux  # Enables strict error handling
             
             # Deployment Variables
             DEPLOY_USER="ubuntu"
@@ -78,7 +79,8 @@ pipeline {
 
             # Move files to the final destination on the remote server
             ssh -o BatchMode=yes -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST << 'EOF'
-                set -euxo pipefail
+                #!/bin/bash
+                set -eux
                 sudo mkdir -p "$DEPLOY_PATH"
                 sudo rsync -av --delete "$TEMP_PATH/" "$DEPLOY_PATH/"
                 sudo rm -rf "$TEMP_PATH"

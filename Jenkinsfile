@@ -12,7 +12,7 @@ pipeline {
             steps {
                 git branch: 'master',
                     credentialsId: 'github-credentials',
-                    url: 'https://github.com/zaheerabbas0/frontend.git'
+                    url: 'git clone git@github.com:zaheerabbas0/frontend.git'
             }
         }
 

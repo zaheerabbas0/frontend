@@ -56,34 +56,37 @@ pipeline {
     steps {
         sshagent(['deploy-key']) {
             sh '''
-            set -ex  # Enables debugging and exits on error
+            set -euxo pipefail  # Enables strict error handling
+            
+            # Deployment Variables
+            DEPLOY_USER="ubuntu"
+            DEPLOY_HOST="192.168.122.252"
+            DEPLOY_PATH="/var/www/frontend"
+            TEMP_PATH="/tmp/frontend_deploy"
 
-            export DEPLOY_USER="ubuntu"
-            export DEPLOY_HOST="192.168.122.252"
-            export DEPLOY_PATH="/var/www/frontend"
-            export TEMP_PATH="/tmp/frontend_deploy"
+            echo "Starting deployment to $DEPLOY_USER@$DEPLOY_HOST"
 
-            echo "Deploying files to $DEPLOY_USER@$DEPLOY_HOST"
-
-            # Ensure the remote host's key is added to known_hosts (idempotent)
+            # Ensure the remote host's key is added to known_hosts safely
             ssh-keygen -R $DEPLOY_HOST || true
-            ssh-keyscan -H $DEPLOY_HOST >> ~/.ssh/known_hosts
+            ssh-keyscan -H $DEPLOY_HOST 2>/dev/null | tee -a ~/.ssh/known_hosts > /dev/null
 
-            # Ensure temporary path exists before copying files
-            ssh -o BatchMode=yes $DEPLOY_USER@$DEPLOY_HOST "mkdir -p $TEMP_PATH"
+            # Ensure temporary path exists on the remote server
+            ssh -o BatchMode=yes -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST "mkdir -p $TEMP_PATH"
 
-            # Copy files to the temporary directory (verbose for debugging)
-            scp -v -r build/* $DEPLOY_USER@$DEPLOY_HOST:$TEMP_PATH/
+            # Copy files to the temporary directory using rsync for better performance
+            rsync -avz --delete build/ $DEPLOY_USER@$DEPLOY_HOST:$TEMP_PATH/
 
-            # Move files to the final destination inside the remote server
-            ssh -o BatchMode=yes $DEPLOY_USER@$DEPLOY_HOST << 'EOF'
-                set -ex
-                sudo mkdir -p $DEPLOY_PATH
-                sudo cp -r /tmp/frontend_deploy/* $DEPLOY_PATH/
-                sudo rm -rf /tmp/frontend_deploy
-                sudo chown -R www-data:www-data $DEPLOY_PATH
+            # Move files to the final destination on the remote server
+            ssh -o BatchMode=yes -o StrictHostKeyChecking=no $DEPLOY_USER@$DEPLOY_HOST << 'EOF'
+                set -euxo pipefail
+                sudo mkdir -p "$DEPLOY_PATH"
+                sudo rsync -av --delete "$TEMP_PATH/" "$DEPLOY_PATH/"
+                sudo rm -rf "$TEMP_PATH"
+                sudo chown -R www-data:www-data "$DEPLOY_PATH"
                 sudo systemctl restart nginx
             EOF
+
+            echo "Deployment completed successfully!"
             '''
         }
     }

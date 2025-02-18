@@ -1,12 +1,22 @@
-# Use Node.js image to build the frontend
-#FROM node:18 AS build
+# Use a lightweight Node.js image
+FROM node:18-alpine 
 
-#WORKDIR /app
+# Set working directory
+WORKDIR /app
 
-#COPY package.json package-lock.json ./
-#RUN npm install
+# Copy package.json and install dependencies
+COPY package.json package-lock.json ./
+RUN npm install
 
-#COPY . .
+# Copy the rest of the application files
+COPY . .
 
-#RUN npm run build
-#CMD ["npx", "serve", "-s", "build", "-l", "3000"]
+# Build the application
+RUN npm run build
+
+# Use a lightweight web server to serve the built React app
+RUN npm install -g serve
+CMD ["serve", "-s", "build", "-l", "3000"]
+
+# Expose the port the app runs on
+EXPOSE 3000

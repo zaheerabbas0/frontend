@@ -2,16 +2,12 @@
 FROM node:18-alpine AS build
 WORKDIR /app
 
-# Copy package files first (for caching)
+# Use a dedicated layer for dependencies to cache them
 COPY package.json package-lock.json ./
+RUN npm ci --legacy-peer-deps
 
-# Install dependencies
-RUN npm install --legacy-peer-deps
-
-# Copy the rest of the project files
+# Copy the rest of the files
 COPY . .
-
-# Build the app
 RUN npm run build
 
 # Production Stage

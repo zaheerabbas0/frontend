@@ -37,7 +37,7 @@ const Chat = () => {
 // useEffect(() => {
 //   fetchUserData();
 // }, [fetchUserData]);
-//hellow world this is from zshere
+//hellow world this is from zsheer abbas
   const userInfo = JSON.parse(localStorage.getItem('user_info'));
   useEffect(() => {
     const createRoomAndConnect = async () => {

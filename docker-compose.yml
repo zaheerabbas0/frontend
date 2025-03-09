@@ -1,20 +1,42 @@
+# version: '3.8'
+
+# services:
+#   frontend:
+#     build:
+#       context: .  # Uses the current directory as the build context
+#       dockerfile: Dockerfile  # Ensure this file exists in your repo
+#     image: zaheer00901/frontend-app:latest  # Image name
+#     deploy:
+#       replicas: 3  # Define the number of replicas (scaling)
+#       restart_policy:
+#         condition: on-failure
+#       update_config:
+#         parallelism: 2
+#       placement:
+#         constraints:
+#           - "node.role==worker"  # Ensures app runs on worker nodes
+#     ports:
+#       - "80:80"
+#     networks:
+#       - frontend_network
+
+# networks:
+#   frontend_network:
+#     driver: overlay  # Swarm-compatible network
 version: '3.8'
 
 services:
   frontend:
-    build:
-      context: .  # Uses the current directory as the build context
-      dockerfile: Dockerfile  # Ensure this file exists in your repo
-    image: zaheer00901/frontend-app:latest  # Image name
+    image: zaheer00901/frontend-app:latest  # Use the pre-built image
     deploy:
-      replicas: 3  # Define the number of replicas (scaling)
+      replicas: 3
       restart_policy:
         condition: on-failure
       update_config:
         parallelism: 2
       placement:
         constraints:
-          - "node.role==worker"  # Ensures app runs on worker nodes
+          - "node.role==worker"  # Ensure app runs on worker nodes
     ports:
       - "80:80"
     networks:
@@ -22,4 +44,4 @@ services:
 
 networks:
   frontend_network:
-    driver: overlay  # Swarm-compatible network
+    driver: overlay

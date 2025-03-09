@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: zaheer00901/frontend-app:latest
+    build: .
+    ports:
+      - "80:80"
+    restart: always
+    deploy:
+      replicas: 2
+      update_config:
+        parallelism: 2
+      restart_policy:
+        condition: on-failure
+    networks:
+      - frontend_network
+
+networks:
+  frontend_network:
+    driver: overlay

@@ -30,7 +30,7 @@ const MainPage = () => {
       <Row className={styles.login_page_container}>
         <Col xs={0} sm={0} md={0} lg={11} className={styles.left_container}>
           <div className={styles.left_container_text}>
-            <h1>Hello zaheer from pakistan lahore lahore</h1>
+            <h1>Hello zaheer from india lahore lahore</h1>
             <p>
               Designed to manage any type of work. Manage your work in your way
             </p>

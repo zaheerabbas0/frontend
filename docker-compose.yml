@@ -2,7 +2,10 @@ version: '3.8'
 
 services:
   frontend:
-    image: zaheer00901/frontend-app:latest
+    build:
+      context: .  # Uses the current directory as the build context
+      dockerfile: Dockerfile  # Ensure this file exists in your repo
+    image: zaheer00901/frontend-app:latest  # Image name
     deploy:
       replicas: 3  # Define the number of replicas (scaling)
       restart_policy:
